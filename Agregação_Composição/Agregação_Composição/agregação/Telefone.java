@@ -1,5 +1,9 @@
 package agregação;
 
+/**
+ * @author Abimael Santos
+ * Classe serve como parte de um Cliente 
+ */
 public class Telefone {
 
 	private String numero;

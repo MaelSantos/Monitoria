@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Abimael Jonas
+ * 
+ * Classe serve como o todo, sendo o Endereco e o Telefone suas partes
+ * Aqui as partes podem exister sem o todo
+ */
 public class Cliente {
 
 	private String nome;
@@ -15,6 +21,11 @@ public class Cliente {
 	private String estado_civil;
 	private String resposavel;
 	
+	/*
+	 * Partes pertencentes ao todo
+	 * elas existem sem todo
+	 * mesmo quando o todo for  
+	 */
 	private Endereco endereco = new Endereco();
 	private List<Telefone> telefones = new ArrayList<>();
 	
