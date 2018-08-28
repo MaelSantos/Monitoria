@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<list>
+  <model.Catalogo>
+    <codigo>dsads</codigo>
+    <nome>sdds</nome>
+    <autor>dsds</autor>
+    <editora>dda</editora>
+    <volume>DSADSA</volume>
+    <ano>312</ano>
+    <numero>0</numero>
+  </model.Catalogo>
+</list>
