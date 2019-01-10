@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<list>
+  <Questao>
+    <valor1>1</valor1>
+    <valor2>1</valor2>
+    <resposta>2</resposta>
+  </Questao>
+  <Questao>
+    <valor1>2</valor1>
+    <valor2>2</valor2>
+    <resposta>4</resposta>
+  </Questao>
+</list>

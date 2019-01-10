@@ -110,8 +110,8 @@ public class Cliente {
 		Endereco endereco = new Endereco("Quirino Cordeiro Magalhaes", "1240", "AABB", "Serra Talhada", 
 				"PE", "Brasil", "Lugar de doido", "000.000-00", cliente);
 		
-		Endereco endereco2 = new Endereco("São Sebastião", "41", "Centro", "Jati", 
-				"CE", "Brasil", "CU do mundo", "000.000-00", cliente);
+//		Endereco endereco2 = new Endereco("São Sebastião", "41", "Centro", "Jati", 
+//				"CE", "Brasil", "CU do mundo", "000.000-00", cliente);
 		
 		Telefone[] telefones = new Telefone[5];
 		
@@ -127,10 +127,10 @@ public class Cliente {
 		System.out.println(cliente.getTelefones()[0]);
 		System.out.println(telefones[0]);
 		
-		System.out.println(endereco.getRua());
-		System.out.println(endereco2.getRua());
-		
-		System.out.println(cliente.getEndereco().getRua());
+//		System.out.println(endereco.getRua());
+//		System.out.println(endereco2.getRua());
+//		
+//		System.out.println(cliente.getEndereco().getRua());
 	
 	}
 
