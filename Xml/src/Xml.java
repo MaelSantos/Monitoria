@@ -62,9 +62,21 @@ public class Xml {
 		
 	}
 	
+	
+	public List<Questao> getQuestaos() {
+		return questaos;
+	}
+	
+	public void setQuestaos(List<Questao> questaos) {
+		this.questaos = questaos;
+	}
+	
 	public static void main(String[] args) {
 		
 		Xml xml = new Xml();
+		
+		xml.setQuestaos(xml.ler());
+		
 		xml.salvar(new Questao(1, 1, 2));
 		xml.salvar(new Questao(2, 2, 4));
 		
