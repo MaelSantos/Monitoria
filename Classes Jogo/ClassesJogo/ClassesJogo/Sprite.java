@@ -1,4 +1,4 @@
-package ClassesJogo;
+package model;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -8,14 +8,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * Classe responsavel por recortar a imagem,
- *  e deixar sua sprite pronta para ser utilizada 
+ * Classe responsavel por recortar a imagem, e deixar sua sprite pronta para ser
+ * utilizada
  *
  */
 public abstract class Sprite {
 
 	/**
-	 * Largura e altura somente de uma imagem da sprite 
+	 * Largura e altura somente de uma imagem da sprite
 	 */
 	private int larguraPersonagem, alturaPersonagem;
 
@@ -32,17 +32,17 @@ public abstract class Sprite {
 	 */
 	protected int linhas, colunas;
 	/**
-	 * Localização x e y da tela 
+	 * LocalizaÃ§Ã£o x e y da tela
 	 */
 	private int x, y;
 	/**
-	 * Array de todos as imagens de sua Sprite
-	 * Cada valor é um estado(aparencia) diferente da Sprite 
+	 * Array de todos as imagens de sua Sprite Cada valor Ã© um estado(aparencia)
+	 * diferente da Sprite
 	 */
 	private BufferedImage[] sprites;
 	/**
-	 * Aparencia atual de sua Sprite.
-	 *  Utilizada para saber qual valor do array das sprites usar 
+	 * Aparencia atual de sua Sprite. Utilizada para saber qual valor do array das
+	 * sprites usar
 	 */
 	private int aparencia;
 
@@ -57,7 +57,8 @@ public abstract class Sprite {
 	 * @param endereco
 	 * @throws IOException
 	 */
-	protected Sprite(int aparencia, int largura, int altura, int colunas, int linhas, int x, int y, String endereco) throws IOException {
+	protected Sprite(int aparencia, int largura, int altura, int colunas, int linhas, int x, int y, String endereco,
+			boolean isLinha) {
 
 		try {
 
@@ -66,23 +67,41 @@ public abstract class Sprite {
 			this.largura = largura;
 			this.altura = altura;
 
-			this.linhas = colunas;
-			this.colunas = linhas;
+			this.linhas = linhas;
+			this.colunas = colunas;
+
 			this.x = x;
 			this.y = y;
 
 			sprites = new BufferedImage[colunas * linhas];
 
 			/*
-			 * Recorta sua imagem em varias,
-			 * cada recorte significa um estado da Sprite 
+			 * Recorta sua imagem em varias, cada recorte significa um estado da Sprite
 			 * 
 			 */
-			for (int i = 0; i < colunas; i++) {
-				for (int j = 0; j < linhas; j++) {
-					sprites[(i * linhas) + j] = personagem.getSubimage(i * (largura/colunas), 
-							j * (altura/linhas), largura/colunas, altura/linhas);
+			if (isLinha) {//recorta por linha, de cima para baixo da esquerda para direita
+				for (int i = 0; i < colunas; i++) {
+					for (int j = 0; j < linhas; j++) {
+						sprites[(i * linhas) + j] = personagem.getSubimage(i * (largura / colunas),
+								j * (altura / linhas), largura / colunas, altura / linhas);
+					}
 				}
+
+			} else {//recorta por coluna, da esquerda para direita de cima para baixo
+				for (int i = 0; i < linhas; i++) {
+					for (int j = 0; j < colunas; j++) {
+
+						System.out.println("PosiÃ§Ã£o: " + ((i * colunas) + j));
+						System.out.println("Largura: " + j * (largura / colunas));
+						System.out.println("Altura: " + i * (altura / linhas));
+						System.out.println("-----------------------------------------");
+
+						sprites[(i * colunas) + j] = personagem.getSubimage(j * (largura / colunas),
+								i * (altura / linhas), largura / colunas, altura / linhas);
+
+					}
+				}
+
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -94,20 +113,23 @@ public abstract class Sprite {
 	}
 
 	/**
-	 * Metodo abstrato resposavel por definir como sera a animação de sua Sprite, 
-	 * Toda Sprite tem uma animação diferente dependendo da imagem.
+	 * Metodo abstrato resposavel por definir como sera a animaÃ§Ã£o de sua Sprite,
+	 * Toda Sprite tem uma animaÃ§Ã£o diferente dependendo da imagem.
+	 * 
 	 * @param direcao
 	 */
 	public abstract void animar(String direcao);
 
 	/**
 	 * Metodo abstrato responsavel por desenhar a Sprite na tela,
+	 * 
 	 * @param g
 	 */
 	public abstract void draw(Graphics g);
-	
+
 	/**
 	 * Metodo abstrato reponsavel por definir como sera o movimento da Sprite
+	 * 
 	 * @param direcao
 	 */
 	public abstract void mover(String direcao);
@@ -162,10 +184,9 @@ public abstract class Sprite {
 	}
 
 	/**
-	 * @return Rectangle 
+	 * @return Rectangle
 	 */
-	public Rectangle getBounds()
-	{
-		return new Rectangle(x+5, y+5, larguraPersonagem-10, alturaPersonagem-10);
+	public Rectangle getBounds() {
+		return new Rectangle(x + 5, y + 5, larguraPersonagem - 10, alturaPersonagem - 10);
 	}
 }
